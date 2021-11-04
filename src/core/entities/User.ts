@@ -1,4 +1,3 @@
-import { Utils } from "../common/Utils"
 
 export interface IUser {
   id?: number,

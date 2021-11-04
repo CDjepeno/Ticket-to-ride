@@ -2,6 +2,12 @@ import {Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn}
 import { Comment } from './Comment';
 import { User } from './User';
 
+export enum Status {
+  TODO = "todo",
+  WIP = "wip",
+  DONE = "done"
+}
+
 @Entity()
 export class Ticket {
   @PrimaryGeneratedColumn()
@@ -13,7 +19,11 @@ export class Ticket {
   @Column()
   description: string;
 
-  @Column()
+  @Column({
+    type: "enum",
+    enum: Status,
+    default: Status.TODO
+  })
   status: string;
 
   @OneToMany(() => Comment, comment => comment.ticket, { nullable: true })
