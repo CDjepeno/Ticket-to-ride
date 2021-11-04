@@ -11,12 +11,12 @@ describe("Ticket UseCase test", () => {
     expect(result).resolves.toEqual("ticket added");
   });
 
-  // it("Should be return array of tickets", () => {
-  //   const userStub = new InMemoryTicketRepository();
-  //   const users = TicketBuilderRepository.usersStub();
+  it("Should be update ticket", () => {
+    const ticketInMemory = new InMemoryTicketRepository();
+    const ticketStub = TicketBuilderRepository.ticketStub();
+    const result = ticketInMemory.updateTicket(ticketStub, ticketStub.id)
+  
+    expect(result).resolves.toEqual("ticket updated");
     
-  //   userStub.getUsers().then((result) => {
-  //     expect(result).toBe(result);
-  //   })
-  // });
+  });
 });
