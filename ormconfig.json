@@ -4,22 +4,22 @@
   "port": 3306,
   "username": "root",
   "password": "",
-  "database": "test_express_mysql",
+  "database": "ticket_to_ride",
   "synchronize": true,
   "logging": false,
   "entities": [
-     "src/models/**/*.ts",
+     "src/infra/models/**/*.ts",
      "./build/src/entity/*.js"
   ],
   "migrations": [
-     "src/migration/**/*.ts"
+     "src/infra/migration/**/*.ts"
   ],
   "subscribers": [
-     "src/subscriber/**/*.ts"
+     "src/infra/subscriber/**/*.ts"
   ],
   "cli": {
-     "entitiesDir": "src/entity",
-     "migrationsDir": "src/migration",
-     "subscribersDir": "src/subscriber"
+     "entitiesDir": "src/infra/models",
+     "migrationsDir": "src/infra/migration",
+     "subscribersDir": "src/infra/subscriber"
   }
 }
