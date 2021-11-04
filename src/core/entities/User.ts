@@ -4,7 +4,7 @@ export interface IUser {
   id?: number,
   username: string,
   email: string,
-  age: string,
+  age: number,
 }
 
 export class User implements IUser {
@@ -12,7 +12,7 @@ export class User implements IUser {
   constructor(
       readonly username: string,
       readonly email: string,
-      readonly age: string){
+      readonly age: number){
       this.id = Utils.generateUniqueId()
   }
 }
