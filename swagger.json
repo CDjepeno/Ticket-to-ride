@@ -13,79 +13,38 @@
   "produces": ["application/json"],
   "paths": {
     "/users": {
-      "get": {
-        "tags": ["User"],
-        "summary": "Get all users",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/user"
-            }
-          }
+      "parameters": [
+        {
+          "name": "username",
+          "email": "email",
+          "age": "age",
+          "in": "path",
+          "required": true,
+          "description": "ID of the ticket that we want to match",
+          "type": "number"
         }
-      },
+      ],
       "post": {
-        "tags": ["ticket"],
-        "summary": "Create a new ticket in system",
+        "tags": ["User"],
+        "summary": "Create new user",
         "requestBody": {
-          "description": "Cat Object",
+          "description": "User Object",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/definitions/ticket"
+                "$ref": "#/definitions/User"
               }
             }
           }
         },
         "produces": ["application/json"],
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Create",
             "schema": {
-              "$ref": "#/definitions/id"
+              "string": "added user"
             }
-          },
-          "400": {
-            "description": "Failed. Bad post data."
-          }
-        }
-      }
-    },
-    "/cats/{id}": {
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "description": "ID of the cat that we want to match",
-          "type": "string"
-        }
-      ],
-      "get": {
-        "tags": ["Comment"],
-        "summary": "Get cat with given ID",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "description": "Cat with id",
-            "schema": {
-              "$ref": "#/definitions/id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Cat"
-            }
-          },
-          "404": {
-            "description": "Failed. Cat not found."
           }
         }
       }
@@ -130,7 +89,7 @@
         }
       }
     },
-    "user": {
+    "User": {
       "type": "object",
       "properties": {
         "username": {

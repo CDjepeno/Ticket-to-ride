@@ -1,4 +1,4 @@
-import { AddUser } from '../../../core/application/useCase/user/AddUser';
+import { AddUser } from '../../../core/application/useCase/user/addUser/AddUser';
 import { UserProvider } from '../UserProvider';
 
 
