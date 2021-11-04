@@ -6,8 +6,7 @@ export class GetUsers {
 
   async execute() {
       const response = new GetUsersResponse();
-      response.user = await this.repository.getUsers()
-
+      response.users = await this.repository.getUsers()
       return response
   }
 

@@ -9,46 +9,40 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Local Dev"
+    }
+  ],
+  "host": "localhost:3000",
+  "tags": [
+    { "name": "User", "description": "API for user" },
+    { "name": "Ticket", "description": "API for ticket" },
+    { "name": "Comment", "description": "API for comment" }
+  ],
+  "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
     "/users": {
-      "parameters": [
-        {
-          "name": "username",
-          "email": "email",
-          "age": "age",
-          "in": "path",
-          "required": true,
-          "description": "ID of the ticket that we want to match",
-          "type": "number"
-        }
-      ],
-      "post": {
+      "get": {
         "tags": ["User"],
-        "summary": "Create new user",
-        "requestBody": {
-          "description": "User Object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "produces": ["application/json"],
+        "summary": "Get all users",
         "responses": {
-          "201": {
-            "description": "Create",
+          "200": {
+            "description": "OK",
             "schema": {
-              "string": "added user"
+              "$ref": "#/definitions/id"
             }
+          },
+          "400": {
+            "description": "Failed. Bad post data." 
           }
-        }
+        } 
       }
     }
+       
   },
   "definitions": {
     "id": {
@@ -100,6 +94,17 @@
         },
         "age": {
           "type": "number"
+        }
+      }
+    }
+  },
+  "User": {
+    "type": "object",
+    "properties": {
+      "user": {
+        "type": "object",
+        "additionnalProperties": {
+          "$ref": "#/definitions/User"
         }
       }
     }
