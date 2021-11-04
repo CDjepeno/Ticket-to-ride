@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import { getRepository } from "typeorm";
 import { Ticket } from "../models/Ticket";
-import { addTicketInteractor } from "../providers/adapters/ticketAdapter";
+import { addTicketInteractor, updateTicketInteractor } from "../providers/adapters/ticketAdapter";
 
 export class TicketController {    
   
@@ -19,11 +19,12 @@ export class TicketController {
 
   static updateTicket = async(request: Request, response: Response, next: NextFunction) => {
       try {
-          const id = request.body
+          const newTicket = request.body
+          const id = +request.params.id
 
-          await addTicketInteractor.execute(id)
+          await updateTicketInteractor.execute(newTicket, id)
 
-          return response.status(201).json('ticket added')
+          return response.status(200).json('ticket updated')
       } catch (err) {
           return response.status(500).send(err)
       }

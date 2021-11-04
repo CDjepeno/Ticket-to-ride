@@ -4,13 +4,13 @@ import { Ticket } from '../../../../entities/Ticket';
 import { ITicketRepository } from '../../../../repository/ITicketRepository';
 
 export class UpdateTicket {
-  constructor(private repository: ITicketRepository, id: number){}
+  constructor(private repository: ITicketRepository){}
 
   async execute(request: AddTicketRequest, id: number) {
       const response = new AddTicketResponse();
-      const oldTicket = this.repository.getDetailsOneTicket(id)
+      const oldTicket = await this.repository.getOneTicket(id)
       let hasError = false;
-
+     
       if (oldTicket === undefined) {
         hasError = true;
         response.ticketUnknown = true;
@@ -18,19 +18,14 @@ export class UpdateTicket {
         return response
       }
 
-      if(!hasError) {
+
         
         const newTicket = new Ticket(request.title, request.description,request.status,request.userId)
+        // console.log(newTicket, id)
 
         await this.repository.updateTicket(newTicket, id)
-
         return newTicket
-      }
-      
-      
-      // const ticket = new Ticket(request.title, request.description,request.status,request.userId)
-      // console.log('core',ticket)
-      // await this.repository.saveTicket(ticket)
+    
 
   }
 

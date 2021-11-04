@@ -6,5 +6,5 @@ export interface ITicketRepository {
   saveTicket(Ticket: ITicket): Promise<string>
   updateTicket(ticket: ITicket, id: number): Promise<string>
   getDetailsOneTicket(idTicket: number): Promise<any>
-  // getCommentForOneTicket(id: string): Promise<IComment>
+  getOneTicket(id: number): Promise<Ticket>
 }

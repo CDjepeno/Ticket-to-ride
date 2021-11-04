@@ -21,7 +21,7 @@ export class TicketProvider implements ITicketRepository {
       if (ticketForUpdate) {
         getRepository(Ticket).merge(ticketForUpdate, ticket);
         await getRepository(Ticket).save(ticketForUpdate);
-        return "fsdfs"
+        return "'ticket updated'"
       }
       throw new Error("unknow this ticket");
     } catch (e) {
@@ -39,6 +39,18 @@ export class TicketProvider implements ITicketRepository {
        return ticketDetails
     } catch (e) {
       throw new Error(e)
+    }
+  }
+
+  async getOneTicket(id: number) {
+    try {
+      const ticket = await getRepository(Ticket).findOne(id);
+      if (ticket) {
+        return ticket;
+      }
+      throw new Error("unknow this ticket");
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
