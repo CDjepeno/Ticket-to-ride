@@ -1,6 +1,6 @@
 import { IUser } from '../../src/core/entities/User';
 import { IUserRepository } from '../../src/core/repository/IUserRepository';
-import { AddUserResponse } from '../../src/core/appilcation/useCase/user/AddUserResponse';
+import { AddUserResponse } from '../../src/core/application/useCase/user/AddUserResponse';
 import { UserBuilderRepository } from './UserBuilderRepository';
 export class InMemoryUserRepository implements IUserRepository{
   private users: Map<number, IUser>
@@ -14,7 +14,7 @@ export class InMemoryUserRepository implements IUserRepository{
           this.users.delete(user.id);
       }
       this.users.set(user.id,user)
-      return Promise.resolve('user added')
+      return Promise.resolve('Welcome')
   }
 
   getUsers(){

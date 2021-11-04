@@ -10,7 +10,7 @@ export class AddUser {
       const response = new AddUserResponse();
       const user = new User(request.username, request.email,request.age)
       await this.repository.saveUser(user)
-      response.user = "user added"
+      response.user = "Welcome"
 
       return response
   }

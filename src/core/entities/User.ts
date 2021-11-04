@@ -12,7 +12,5 @@ export class User implements IUser {
   constructor(
       readonly username: string,
       readonly email: string,
-      readonly age: number){
-      this.id = Utils.generateUniqueId()
-  }
+      readonly age: number){}
 }

@@ -8,6 +8,6 @@ describe('User UseCase test', () => {
     const user = UserBuilderRepository.userStub()
     const userStub = new InMemoryUserRepository()
     const result = userStub.saveUser(user)
-    expect(result).resolves.toEqual('user added')
+    expect(result).resolves.toEqual('Welcome')
 })
 })
