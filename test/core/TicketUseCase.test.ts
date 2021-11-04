@@ -1,5 +1,6 @@
 import { TicketBuilderRepository } from '../builder/TicketBuilderRepository';
 import { InMemoryTicketRepository } from '../builder/InMemoryTicketRepository';
+import { GetTicket } from '../../src/core/application/useCase/ticket/getTicket/GetTicket';
 
 
 describe("Ticket UseCase test", () => {
@@ -19,4 +20,13 @@ describe("Ticket UseCase test", () => {
     expect(result).resolves.toEqual("ticket updated");
     
   });
+
+  it('Should get a ticket', () => {
+    const ticketStub = TicketBuilderRepository.ticketStub();
+    const ticketInMemory = new InMemoryTicketRepository();
+    ticketInMemory.saveTicket(ticketStub)
+
+    const result = ticketInMemory.getDetailsOneTicket(ticketStub.id)
+    expect(result).resolves.toEqual(ticketStub)
+})
 });

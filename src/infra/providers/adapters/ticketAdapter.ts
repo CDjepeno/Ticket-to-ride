@@ -7,4 +7,4 @@ const ticketRepository = new TicketProvider();
 const addTicketInteractor = new AddTicket(ticketRepository);
 const updateTicketInteractor = new UpdateTicket(ticketRepository);
 
-export { addTicketInteractor,updateTicketInteractor };
+export { addTicketInteractor,updateTicketInteractor }; 

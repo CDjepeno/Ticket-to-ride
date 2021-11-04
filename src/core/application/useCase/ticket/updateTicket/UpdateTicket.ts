@@ -8,7 +8,7 @@ export class UpdateTicket {
 
   async execute(request: AddTicketRequest, id: number) {
       const response = new AddTicketResponse();
-      const oldTicket = await this.repository.getOneTicket(id)
+      const oldTicket = await this.repository.getDetailsOneTicket(id)
       let hasError = false;
      
       if (oldTicket === undefined) {

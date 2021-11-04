@@ -22,6 +22,10 @@ export class InMemoryTicketRepository implements ITicketRepository {
   }
 
   getDetailsOneTicket(id: number): Promise<ITicket> {
-    return Promise.resolve(this.tickets.get(+id));
+    return Promise.resolve(this.tickets.get(id))
+  }
+  
+  getOneTicket(id: number): Promise<ITicket> {
+    return Promise.resolve(this.tickets.get(id))
   }
 }
