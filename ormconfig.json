@@ -4,7 +4,7 @@
   "port": 3306,
   "username": "root",
   "password": "",
-  "database": "ticket_to_ride",
+  "database": "ride1",
   "synchronize": true,
   "logging": false,
   "entities": [
@@ -15,7 +15,7 @@
      "src/infra/migration/**/*.ts"
   ],
   "subscribers": [
-     "src/infra/subscriber/**/*.ts"
+     "src/infra/subscriber/**/*.ts" 
   ],
   "cli": {
      "entitiesDir": "src/infra/models",
