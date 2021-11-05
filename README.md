@@ -11,8 +11,8 @@ $ cd ticket_to_ride
 $ npm install
 $ Configure file ormconfig.json for database mysql
 $ npm run test
-$ npm run typeorm:create
-$ npm run typeorm:run 
+$ npm run typeorm:create for create migration
+$ npm run typeorm:run for run migration
 $ npm run dev
 $ http://localhost:3000/swagger/ => To see all API
 ```    
