@@ -3,4 +3,5 @@ export interface ICommentRepository {
   
   saveComment(comment: IComment): Promise<string>
   getCommentForOneTicket(idTicket: number): Promise<any>
+  deleteComment(id: number): Promise<string>
 }

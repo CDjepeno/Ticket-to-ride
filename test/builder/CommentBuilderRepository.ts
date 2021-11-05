@@ -2,7 +2,7 @@ import { Utils } from "../../src/core/common/Utils";
 import { Status } from "../../src/core/entities/Ticket";
 import { IComment } from '../../src/core/entities/Comment';
 export class CommentBuilderRepository {
-  static ticketStub(): IComment {
+  static commentStub(): IComment {
     return {
       id: Utils.generateUniqueId(),
       content: "Je suis un premier commentaire",
@@ -11,7 +11,7 @@ export class CommentBuilderRepository {
     };
   }
 
-  static usersStub(): IComment[] {
+  static commentsStub(): IComment[] {
     return [
       {
         id: Utils.generateUniqueId(),

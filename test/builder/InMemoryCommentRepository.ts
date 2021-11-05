@@ -22,5 +22,9 @@ export class InMemoryCommentRepository implements ICommentRepository {
     return Promise.resolve("ticket updated");
   }
 
+  async deleteComment(idComment: number): Promise<string> {
+    return Promise.resolve("comment deleted")
+  }
+
 
 }

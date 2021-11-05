@@ -29,4 +29,12 @@ export class CommentProvider implements ICommentRepository {
     }
   }
 
+  async deleteComment(idComment: number) {
+    try {
+        return ''
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
 }
