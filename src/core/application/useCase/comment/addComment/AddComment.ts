@@ -10,7 +10,7 @@ export class AddComment {
       const response = new AddCommentResponse();
       const newComment = new Comment(request.content, request.userId,request.ticketId)
       await this.repository.saveComment(newComment)
-      response.user = "ticket added"
+      response.user = "comment added"
 
       return response
   }

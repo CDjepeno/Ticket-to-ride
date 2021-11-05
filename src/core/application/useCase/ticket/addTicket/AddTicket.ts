@@ -9,7 +9,6 @@ export class AddTicket {
   async execute(request: AddTicketRequest) {
       const response = new AddTicketResponse();
       const ticket = new Ticket(request.title, request.description,request.status,request.userId)
-      console.log('core',ticket)
       await this.repository.saveTicket(ticket)
       response.user = "ticket added"
 
