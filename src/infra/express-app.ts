@@ -5,6 +5,7 @@ import * as swaggerDocument from '../../swagger.json'
 import * as swaggerUi from 'swagger-ui-express';
 import ticketRoutes from './routes/ticketRoutes';
 import commentRoutes from './routes/commentRoutes';
+import loginRoute from './routes/loginRoutes';
 
 export const expressApp = async(app) => {
   app.use(express.json());
@@ -14,5 +15,6 @@ export const expressApp = async(app) => {
   app.use(userRoutes)
   app.use(ticketRoutes)
   app.use(commentRoutes)
+  app.use(loginRoute)
 
 }

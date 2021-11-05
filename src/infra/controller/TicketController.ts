@@ -13,7 +13,6 @@ export class TicketController {
   ) => {
     try {
       const ticket = request.body;
-
       const result = await addTicketInteractor.execute(ticket);
 
       return response.status(201).json(result);
@@ -24,7 +23,7 @@ export class TicketController {
 
   static updateTicket = async (
     request: Request,
-    response: Response,
+    response: Response, 
     next: NextFunction
   ) => {
     try {
