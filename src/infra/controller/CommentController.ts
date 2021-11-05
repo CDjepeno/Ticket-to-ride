@@ -19,7 +19,7 @@ export class CommentController {
           const provider = new CommentProvider()
           const id = +request.params.id
 
-          const comments = await provider.getCommentForOneTicket(id)
+          const comments = await provider.getCommentsForOneTicket(id)
           return response.status(200).json(comments)
       } catch (err) {
           return response.status(500).send(err)

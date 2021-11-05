@@ -1,6 +1,5 @@
 import { getRepository } from 'typeorm';
-import { IComment } from '../../core/entities/Comment';
-import { Comment } from '../models/Comment';
+import { IComment, Comment } from '../../core/entities/Comment';
 import { ICommentRepository } from '../../core/repository/ICommentRepository';
 
 export class CommentProvider implements ICommentRepository {
@@ -15,7 +14,7 @@ export class CommentProvider implements ICommentRepository {
     }
   }
 
-  async getCommentForOneTicket(idTicket: number) {
+  async getCommentsForOneTicket(idTicket: number) {
     try {
       const ticketComment = await getRepository(Comment)
       .createQueryBuilder("comment")
@@ -35,6 +34,30 @@ export class CommentProvider implements ICommentRepository {
       if(deleteComment) {
         await getRepository(Comment).delete(idComment);
         return 'comment deleted'
+      }
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  async updateComment(ticket: IComment, id: number) {
+    try {
+      const ticketForUpdate = await getRepository(Comment).findOne(id);
+      if (ticketForUpdate) {
+        getRepository(Comment).merge(ticketForUpdate, ticket);
+        await getRepository(Comment).save(ticketForUpdate);
+        return "ticket updated";
+      }
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  async getOneComment(idComment: number) {
+    try {
+      const comment = await getRepository(Comment).findOne(idComment);
+      if(comment) {
+        return comment 
       }
     } catch (err) {
       throw new Error(err)

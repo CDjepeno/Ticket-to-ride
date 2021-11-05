@@ -1,6 +1,6 @@
 import { Status } from "../../../../../infra/models/Ticket";
 
-export class AddTicketRequest {
+export class UpdateTicketRequest {
   constructor(
   readonly id: number,
   readonly title: string,

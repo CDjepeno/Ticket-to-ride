@@ -1,5 +1,4 @@
 import { Utils } from "../../src/core/common/Utils";
-import { Status } from "../../src/core/entities/Ticket";
 import { IComment } from '../../src/core/entities/Comment';
 export class CommentBuilderRepository {
   static commentStub(): IComment {

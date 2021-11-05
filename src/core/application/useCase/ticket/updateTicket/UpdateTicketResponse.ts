@@ -1,5 +1,5 @@
 import { ITicket } from './../../../../entities/Ticket';
-export class AddTicketResponse {
+export class UpdateTicketResponse {
   ticketUnknown: boolean = false
   ticket: ITicket
   
