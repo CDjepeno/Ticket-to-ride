@@ -27,7 +27,7 @@ export class UpdateTicket {
       );
 
       await this.repository.updateTicket(newTicket, id);
-      return newTicket;
+      return "ticket updated";
     } catch (err) {
       throw new Error(err);
     }

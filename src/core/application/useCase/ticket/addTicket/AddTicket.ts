@@ -10,8 +10,7 @@ export class AddTicket {
     try {
       const response = new AddTicketResponse();
       const ticket = new Ticket(request.title, request.description,request.status,request.userId)
-      await this.repository.saveTicket(ticket)
-      response.user = "ticket added"
+      response.ticket = await this.repository.saveTicket(ticket)
 
       return response
     } catch (err) {

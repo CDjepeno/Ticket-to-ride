@@ -1,3 +1,3 @@
 export class AddTicketResponse {
-  user?: string
+  ticket?: string
 }
