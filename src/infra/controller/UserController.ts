@@ -6,8 +6,8 @@ export class UserController {
   static save = async(request: Request, response: Response, next: NextFunction) => {
       try {
           const user = request.body
-          await addUserInteractor.execute(user)
-          return response.status(201).json('Welcome')
+          const result = await addUserInteractor.execute(user)
+          return response.status(201).json(result)
       } catch (err) {
           return response.status(500).send(err)
       }

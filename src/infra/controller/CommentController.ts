@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import { addCommentInteractor } from "../providers/adapters/commentAdapter";
+import { addCommentInteractor, deleteCommentInteractor } from "../providers/adapters/commentAdapter";
 import { CommentProvider } from '../providers/CommentProvider';
 
 export class CommentController {    
@@ -7,8 +7,8 @@ export class CommentController {
   static save = async(request: Request, response: Response, next: NextFunction) => {
       try {
           const comment = request.body
-          await addCommentInteractor.execute(comment)
-          return response.status(201).json('comment added')
+          const result = await addCommentInteractor.execute(comment)
+          return response.status(201).json(result)
       } catch (err) {
           return response.status(500).send(err)
       }
@@ -25,6 +25,16 @@ export class CommentController {
           return response.status(500).send(err)
       }
   }
+
+  static delete = async(request: Request, response: Response, next: NextFunction) => {
+    try {
+        const idComment = +request.params.id
+        const result = await deleteCommentInteractor.execute(idComment)
+        return response.status(200).json(result)
+    } catch (err) {
+        return response.status(500).send(err)
+    }
+}
   
   
 }

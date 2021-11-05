@@ -1,6 +1,6 @@
 import { InMemoryCommentRepository } from '../builder/InMemoryCommentRepository';
 import { CommentBuilderRepository } from '../builder/CommentBuilderRepository';
-import { DeleteComment } from '../../src/core/application/useCase/comment/deleteComment /DeleteComment';
+
 describe('Comment UseCase test', () => {
   it("Should register a new comment", () => {
     const memory = new InMemoryCommentRepository();

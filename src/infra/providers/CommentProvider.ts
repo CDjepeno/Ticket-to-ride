@@ -9,7 +9,7 @@ export class CommentProvider implements ICommentRepository {
     try {
       const newComment = await getRepository(Comment).create(comment)
       await getRepository(Comment).save(newComment)
-      return "Welcome"
+      return "comment added"
     } catch (err) {
       throw new Error(err)
     }
@@ -31,7 +31,11 @@ export class CommentProvider implements ICommentRepository {
 
   async deleteComment(idComment: number) {
     try {
-        return ''
+      const deleteComment = await getRepository(Comment).findOne(idComment);
+      if(deleteComment) {
+        await getRepository(Comment).delete(idComment);
+        return 'comment deleted'
+      }
     } catch (err) {
       throw new Error(err)
     }
