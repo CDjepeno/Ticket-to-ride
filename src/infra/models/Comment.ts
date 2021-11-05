@@ -1,6 +1,6 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import { User } from './User';
-import { Ticket } from './Ticket';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./User";
+import { Ticket } from "./Ticket";
 
 @Entity()
 export class Comment {
@@ -11,14 +11,14 @@ export class Comment {
   content: string;
 
   @Column("integer")
-  userId: number
+  userId: number;
 
   @Column("integer")
-  ticketId: number 
+  ticketId: number;
 
-  @ManyToOne(() => User, user => user.comments)
-  user: User
+  @ManyToOne(() => User, (user) => user.comments)
+  user: User;
 
-  @ManyToOne(() => Ticket, ticket => ticket.comments)
-  ticket: Ticket
+  @ManyToOne(() => Ticket, (ticket) => ticket.comments)
+  ticket: Ticket;
 }

@@ -1,11 +1,18 @@
-import {Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import { Comment } from './Comment';
-import { User } from './User';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Comment } from "./Comment";
+import { User } from "./User";
 
 export enum Status {
   TODO = "todo",
   WIP = "wip",
-  DONE = "done"
+  DONE = "done",
 }
 
 @Entity()
@@ -13,7 +20,7 @@ export class Ticket {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column("varchar",{ length: 200 })
+  @Column("varchar", { length: 200 })
   title: string;
 
   @Column("text")
@@ -22,18 +29,18 @@ export class Ticket {
   @Column({
     type: "enum",
     enum: Status,
-    default: Status.TODO
+    default: Status.TODO,
   })
   status: string;
 
-  @OneToMany(() => Comment, comment => comment.ticket, { nullable: true })
+  @OneToMany(() => Comment, (comment) => comment.ticket, { nullable: true })
   @JoinColumn()
-  comments: Comment[]
+  comments: Comment[];
 
   @Column()
-  userId: number
+  userId: number;
 
-  @OneToOne(() => User)  
+  @OneToOne(() => User)
   @JoinColumn()
-  user: User
+  user: User;
 }

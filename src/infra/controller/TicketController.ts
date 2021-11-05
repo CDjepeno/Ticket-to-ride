@@ -1,6 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { Ticket } from "../models/Ticket";
 import {
   addTicketInteractor,
   getTicketInteractor,
