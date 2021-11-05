@@ -25,6 +25,6 @@ export class UpdateComment {
     );
 
     await this.repository.updateComment(newComment, id);
-    return newComment;
+    return "comment updated";
   }
 }

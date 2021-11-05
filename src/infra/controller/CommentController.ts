@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import { addCommentInteractor, deleteCommentInteractor } from "../providers/adapters/commentAdapter";
+import { addCommentInteractor, deleteCommentInteractor, updateCommentInteractor } from "../providers/adapters/commentAdapter";
 import { CommentProvider } from '../providers/CommentProvider';
 
 export class CommentController {    
@@ -21,6 +21,19 @@ export class CommentController {
 
           const comments = await provider.getCommentsForOneTicket(id)
           return response.status(200).json(comments)
+      } catch (err) {
+          return response.status(500).send(err)
+      }
+  }
+
+  static update = async(request: Request, response: Response, next: NextFunction) => {
+      try {
+        const newComment = request.body;
+        const id = +request.params.id;
+  
+        const result = await updateCommentInteractor.execute(newComment, id);
+  
+        return response.status(200).json(result);
       } catch (err) {
           return response.status(500).send(err)
       }

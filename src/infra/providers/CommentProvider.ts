@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
-import { IComment, Comment } from '../../core/entities/Comment';
+import { IComment } from '../../core/entities/Comment';
 import { ICommentRepository } from '../../core/repository/ICommentRepository';
+import { Comment } from '../models/Comment';
 
 export class CommentProvider implements ICommentRepository {
 
@@ -40,14 +41,16 @@ export class CommentProvider implements ICommentRepository {
     }
   }
 
-  async updateComment(ticket: IComment, id: number) {
+  async updateComment(comment: IComment, id: number) {
     try {
-      const ticketForUpdate = await getRepository(Comment).findOne(id);
-      if (ticketForUpdate) {
-        getRepository(Comment).merge(ticketForUpdate, ticket);
-        await getRepository(Comment).save(ticketForUpdate);
-        return "ticket updated";
+      const commentForUpdate = await getRepository(Comment).findOne(id);
+      if (commentForUpdate) {
+        getRepository(Comment).merge(commentForUpdate, comment);
+        await getRepository(Comment).save(commentForUpdate);
+        
+        return "comment updated";
       }
+      throw new Error("unknow this comment");
     } catch (err) {
       throw new Error(err)
     }

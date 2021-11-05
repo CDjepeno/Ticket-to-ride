@@ -1,8 +1,8 @@
 export interface IComment {
   id?: number,
   content: string,
-  userId: number,
-  ticketId: number
+  userId?: number,
+  ticketId?: number
 }
 
 export class Comment implements IComment {
