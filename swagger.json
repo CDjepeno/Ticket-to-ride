@@ -19,7 +19,8 @@
   "tags": [
     { "name": "User", "description": "API for user" },
     { "name": "Ticket", "description": "API for ticket" },
-    { "name": "Comment", "description": "API for comment" }
+    { "name": "Comment", "description": "API for comment" },
+    { "name": "login", "description": "API for login" }
   ],
   "schemes": ["http"],
   "consumes": ["application/json"],
