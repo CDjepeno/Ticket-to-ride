@@ -13,10 +13,10 @@ export class Ticket {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("varchar",{ length: 200 })
   title: string;
 
-  @Column()
+  @Column("text")
   description: string;
 
   @Column({

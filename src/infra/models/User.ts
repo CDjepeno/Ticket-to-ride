@@ -6,13 +6,13 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("varchar",{ length: 200 })
   username: string;
 
-  @Column()
+  @Column("varchar",{ length: 200 })
   email: string;
 
-  @Column()
+  @Column("integer")
   age: number;
 
   @OneToMany(() => Comment, comment => comment.user, { nullable: false }) 

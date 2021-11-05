@@ -7,13 +7,13 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("text")
   content: string;
 
-  @Column()
+  @Column("integer")
   userId: number
 
-  @Column()
+  @Column("integer")
   ticketId: number 
 
   @ManyToOne(() => User, user => user.comments)
