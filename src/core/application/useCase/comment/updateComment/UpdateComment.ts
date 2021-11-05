@@ -7,24 +7,30 @@ export class UpdateComment {
   constructor(private repository: ICommentRepository) {}
 
   async execute(request: AddTicketRequest, id: number) {
-    const response = new UpdateCommentResponse();
-    const oldTicket = await this.repository.getOneComment(id);
-    let hasError = false;
+    try {
+      const response = new UpdateCommentResponse();
+      const oldTicket = await this.repository.getOneComment(id);
+      let hasError = false;
 
-    if (oldTicket === undefined) {
-      hasError = true;
-      response.commentUnknown = true;
+      if (oldTicket === undefined) {
+        hasError = true;
+        response.commentUnknown = true;
 
+        return response;
+      }
+
+      const newComment = new Comment(
+        request.content,
+        +request.userId,
+        +request.ticketId
+      );
+
+      await this.repository.updateComment(newComment, id);
+
+      response.comment = "comment updated";
       return response;
+    } catch (err) {
+      throw new Error(err);
     }
-
-    const newComment = new Comment(
-      request.content,
-      +request.userId,
-      +request.ticketId
-    );
-
-    await this.repository.updateComment(newComment, id);
-    return "comment updated";
   }
 }

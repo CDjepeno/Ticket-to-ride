@@ -7,12 +7,16 @@ export class AddTicket {
   constructor(private repository: ITicketRepository){}
 
   async execute(request: AddTicketRequest) {
+    try {
       const response = new AddTicketResponse();
       const ticket = new Ticket(request.title, request.description,request.status,request.userId)
       await this.repository.saveTicket(ticket)
       response.user = "ticket added"
 
       return response
+    } catch (err) {
+      throw new Error(err)
+    }
   }
 
 }
