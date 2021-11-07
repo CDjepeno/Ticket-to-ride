@@ -11,6 +11,7 @@ export class UserProvider implements IUserRepository {
       await getRepository(User).save(newUser)
       return "Welcome"
     } catch (err) {
+      console.log('error')
       throw new Error(err)
     }
   }

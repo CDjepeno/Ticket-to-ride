@@ -15,14 +15,21 @@
       "description": "Local Dev"
     }
   ],
-  "host": "localhost:3000",
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+
+    }
+
+  },
   "tags": [
     { "name": "User", "description": "API for user" },
     { "name": "Ticket", "description": "API for ticket" },
     { "name": "Comment", "description": "API for comment" },
-    { "name": "login", "description": "API for login" }
+    { "name": "Login", "description": "API for login" }
   ],
-  "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
@@ -34,17 +41,203 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/id"
+              "$ref": "#/definitions/User"
             }
+          }
+        }
+      },
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a new user",
+        "requestBody": {
+          "description": "Create user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
           },
           "400": {
-            "description": "Failed. Bad post data." 
+            "description": "Failed. Bad post data."
           }
-        } 
+        }
+      }
+    },
+    "/ticket": {
+      "parameters": [
+        {
+          "name": "auth",
+          "in": "header",
+          "required": true,
+          "description": "an authorization header",
+          "required": true, 
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": ["Ticket"],
+        "summary": "Create a new ticket",
+        "requestBody": {
+          "description": "Create ticket",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/ticket/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id of the ticket that we want to match"
+        }
+      ],
+      "put": {
+        "tags": ["Ticket"],
+        "summary": "Update a ticket",
+        "requestBody": {
+          "description": "Update ticket",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Ticket"],
+        "summary": "get details for one ticket",
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }  
+    },
+    "/ticket/{id}/comments": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id of the ticket that we want to match"
+        }
+      ],
+      "get": {
+        "tags": ["Comment"],
+        "summary": "Get comments for one ticket",
+        "requestBody": {
+          "description": "Update ticket",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Ticket"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }, 
+    "/comment": {
+      "post": {
+        "tags": ["Comment"],
+        "summary": "Create a new comment for one ticket",
+        "requestBody": {
+          "description": "Create comment for one ticket",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Comment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Login"],
+        "summary": "Login",
+        "requestBody": {
+          "description": "Login",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
       }
     }
-       
+
+
+
   },
+
   "definitions": {
     "id": {
       "properties": {
@@ -87,15 +280,9 @@
     "User": {
       "type": "object",
       "properties": {
-        "username": {
-          "type": "string"
-        },
         "email": {
           "type": "string"
-        },
-        "age": {
-          "type": "number"
-        }
+        } 
       }
     }
   },
@@ -104,8 +291,19 @@
     "properties": {
       "user": {
         "type": "object",
-        "additionnalProperties": {
+        "additionnalProperties":{
           "$ref": "#/definitions/User"
+        }
+      }
+    }
+  },
+  "Ticket": {
+    "type": "object",
+    "properties": {
+      "ticket": {
+        "type": "object",
+        "additionnalProperties": {
+          "$ref": "#/definitions/Ticket"
         }
       }
     }
