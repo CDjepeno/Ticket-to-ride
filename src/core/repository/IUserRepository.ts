@@ -1,7 +1,7 @@
 import { IUser } from '../entities/User';
-import { AddUserResponse } from '../application/useCase/user/addUser/AddUserResponse';
+import { ValidationError } from 'class-validator';
 export interface IUserRepository {
   getUsers(): Promise<IUser[]>
 
-  saveUser(user: IUser): Promise<string>
+  saveUser(user: IUser): Promise<string|ValidationError[]>;
 }
