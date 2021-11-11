@@ -21,11 +21,8 @@ export class CommentProvider implements ICommentRepository {
       if( err.length > 0) {
         return err
       } 
-      // console.log("object")
-      // console.log(userExist, ticketExist )
       
       if(!userExist || !ticketExist) {
-        // throw new Error('Unknow User or ticket')
         return 'Unknow User or ticket'
       }else {
         await getRepository(Comment).save(newComment);

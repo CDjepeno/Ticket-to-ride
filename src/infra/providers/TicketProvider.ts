@@ -2,13 +2,22 @@ import { ITicket } from "./../../core/entities/Ticket";
 import { getRepository } from "typeorm";
 import { ITicketRepository } from "../../core/repository/ITicketRepository";
 import { Ticket } from "../models/Ticket";
+import { validate } from "class-validator";
 
 export class TicketProvider implements ITicketRepository {
   async saveTicket(ticket: ITicket) {
     try {
       const newTicket = await getRepository(Ticket).create(ticket);
-      await getRepository(Ticket).save(newTicket);
-      return "ticket added";
+
+      const err = await validate(newTicket);
+      
+      if( err.length > 0) {
+        return err
+      } else {
+        await getRepository(Ticket).save(newTicket);
+        return "ticket added";
+      }
+
     } catch (err) {
       throw new Error(err);
     }

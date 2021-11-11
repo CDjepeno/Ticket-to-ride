@@ -9,16 +9,20 @@ export class AddComment {
   async execute(request: AddCommentRequest): Promise<any> {
     try {
       const response = new AddCommentResponse();
-      const newComment = new Comment(request.content,request.userId,request.ticketId);
+      const newComment = new Comment(
+        request.content,
+        request.userId,
+        request.ticketId
+      );
 
-      return this.repository.saveComment(newComment).then(res => {
-        if(res.length > 0) {
-          return res 
+      return this.repository.saveComment(newComment).then((res) => {
+        if (res.length > 0) {
+          return res;
         } else {
-          response.user = "comment added"
-          return response
+          response.user = "comment added";
+          return response;
         }
-      })
+      });
     } catch (err) {
       throw new Error(err);
     }

@@ -14,8 +14,11 @@ export class TicketController {
     try {
       const ticket = request.body;
       const result = await addTicketInteractor.execute(ticket);
-
-      return response.status(201).json(result);
+      if (result.length > 0) {
+        return response.status(400).json(result);
+      } else {
+        return response.status(201).json(result);
+      }
     } catch (err) {
       return response.status(500).send(err);
     }

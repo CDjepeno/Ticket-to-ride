@@ -1,4 +1,4 @@
-import { IsInt } from "class-validator";
+import { Contains, IsInt } from "class-validator";
 import {
   Column,
   Entity,
@@ -39,6 +39,7 @@ export class Ticket {
   comments: Comment[];
 
   @Column()
+  @IsInt()
   userId: number;
 
   @OneToOne(() => User)
