@@ -4,6 +4,6 @@ export interface ITicketRepository {
   
   saveTicket(Ticket: ITicket): Promise<string|ValidationError[]>
   updateTicket(ticket: ITicket, id: number): Promise<string>
-  getDetailsOneTicket(idTicket: number): Promise<any>
+  getDetailsOneTicket(idTicket: number): Promise<any>|ITicket
   getOneTicket(id: number)
 }

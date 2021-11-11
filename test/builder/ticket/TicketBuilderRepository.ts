@@ -1,32 +1,33 @@
-import { Utils } from "../../src/core/common/Utils";
-import { ITicket, Status } from "../../src/core/entities/Ticket";
+import { Utils } from "../../../src/core/common/Utils";
+import { ITicket, Status } from "../../../src/core/entities/Ticket";
+
 export class TicketBuilderRepository {
   static ticketStub(): ITicket {
     return {
-      id: Utils.generateUniqueId(),
+      id: 1,
       title: "concert",
       description: "Le ticket de concert",
       status: Status.WIP,
-      userId: Utils.generateUniqueId()
+      userId: 2
     };
   }
 
   static usersStub(): ITicket[] {
     return [
       {
-        id: Utils.generateUniqueId(),
+        id: 3,
         title: "concert",
         description: "Le ticket de concert",
         status: Status.WIP,
-        userId: Utils.generateUniqueId(),
+        userId: 4,
       },
       {
-        id: Utils.generateUniqueId(),
+        id: 5,
         title: "concert",
         description: "Le ticket de foot",
         status: Status.WIP,
-        userId: Utils.generateUniqueId(),
-      },
+        userId: 6,
+      }
     ];
   }
 }

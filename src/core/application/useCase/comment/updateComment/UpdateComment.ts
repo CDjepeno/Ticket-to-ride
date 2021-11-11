@@ -1,4 +1,4 @@
-import { AddTicketRequest } from "./UpdateCommentRequest";
+import { UpdateCommentRequest } from "./UpdateCommentRequest";
 import { ICommentRepository } from "../../../../repository/ICommentRepository";
 import { UpdateCommentResponse } from "./UpdateCommentResponse";
 import { Comment } from "../../../../entities/Comment";
@@ -6,13 +6,13 @@ import { Comment } from "../../../../entities/Comment";
 export class UpdateComment {
   constructor(private repository: ICommentRepository) {}
 
-  async execute(request: AddTicketRequest, id: number) {
+  async execute(request: UpdateCommentRequest, id: number) {
     try {
       const response = new UpdateCommentResponse();
-      const oldTicket = await this.repository.getOneComment(id);
+      const oldComment = await this.repository.getOneComment(id);
       let hasError = false;
 
-      if (oldTicket === undefined) {
+      if (oldComment === undefined) {
         hasError = true;
         response.commentUnknown = true;
 
@@ -25,13 +25,13 @@ export class UpdateComment {
         +request.ticketId
       );
 
-      return  this.repository.updateComment(newComment, id).then(res => {
+      return this.repository.updateComment(newComment, id).then((res) => {
         if (res.length > 0) {
-          return res
-        } 
+          return res;
+        }
         response.comment = "comment updated";
-        return response
-      })
+        return response;
+      });
     } catch (err) {
       throw new Error(err);
     }

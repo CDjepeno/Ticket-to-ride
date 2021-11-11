@@ -1,9 +1,8 @@
 
-export class AddTicketRequest {
+export class UpdateCommentRequest {
   constructor(
-  readonly id: number,
   readonly content: string,
-  readonly ticketId: string,
+  readonly ticketId: number,
   readonly userId: number
   ) {}
 }

@@ -1,32 +1,35 @@
-import { InMemoryCommentRepository } from '../builder/InMemoryCommentRepository';
-import { CommentBuilderRepository } from '../builder/CommentBuilderRepository';
-import { UpdateComment } from '../../src/core/application/useCase/comment/updateComment/UpdateComment';
+import { CommentBuilderRepository } from "../builder/comment/CommentBuilderRepository";
+import {
+  addCommentInteractorForTest,
+  deleteCommentInteractorForTest,
+  updateCommentInteractorForTest,
+} from "../builder/adapters/commentAdapter";
 
-describe('Comment UseCase test', () => {
+describe("Comment UseCase test", () => {
   it("Should register a new comment", () => {
-    const memory = new InMemoryCommentRepository();
-    const commentStub = CommentBuilderRepository.commentStub();
-    const result = memory.saveComment(commentStub);
+    const comment = CommentBuilderRepository.commentStub();
+
+    const result = addCommentInteractorForTest.execute(comment);
 
     expect(result).resolves.toEqual("comment added");
   });
 
-  it("Should delete a comment", () => {
-    const memory = new InMemoryCommentRepository();
+  it("Should delete a comment", async () => {
     const commentStub = CommentBuilderRepository.commentStub();
-    memory.saveComment(commentStub)
 
-    const result = memory.deleteComment(commentStub.id);
+    const result = await deleteCommentInteractorForTest.execute(commentStub.id);
 
-    expect(result).resolves.toEqual("comment deleted");
+    expect(result.comment).toBe("comment deleted");
   });
 
-  it("Should be update comment", () => {
-    const commentInMemory = new InMemoryCommentRepository();
+  it("Should be update comment", async () => {
     const commentStub = CommentBuilderRepository.commentStub();
-    const result = commentInMemory.updateComment(commentStub, commentStub.id)
-  
-    expect(result).resolves.toEqual("ticket updated");
-    
+
+    const result = await updateCommentInteractorForTest.execute(
+      commentStub,
+      commentStub.id
+    );
+
+    expect(result).toBe("ticket updated");
   });
-})
+});

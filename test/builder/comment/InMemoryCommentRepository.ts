@@ -1,6 +1,5 @@
-import { TicketBuilderRepository } from "./TicketBuilderRepository";
-import { ICommentRepository } from "../../src/core/repository/ICommentRepository";
-import { IComment } from "../../src/core/entities/Comment";
+import { ICommentRepository } from "../../../src/core/repository/ICommentRepository";
+import { IComment } from "../../../src/core/entities/Comment";
 import { CommentBuilderRepository } from "./CommentBuilderRepository";
 export class InMemoryCommentRepository implements ICommentRepository {
   private comments: Map<number, IComment>;
@@ -13,7 +12,12 @@ export class InMemoryCommentRepository implements ICommentRepository {
     return Promise.resolve("ticket updated");
   }
   updateComment(comment: IComment, id: number): Promise<string> {
-    const result = TicketBuilderRepository.usersStub();
+    const commentStub = CommentBuilderRepository.commentStub();
+    this.saveComment(commentStub);
+
+    comment.content = "commentaire changer";
+
+    this.comments.set(id, comment);
     return Promise.resolve("ticket updated");
   }
 
@@ -26,10 +30,16 @@ export class InMemoryCommentRepository implements ICommentRepository {
   }
 
   async deleteComment(id: number): Promise<string> {
+    const commentStub = CommentBuilderRepository.commentStub();
+    this.comments.set(commentStub.id, commentStub);
+
+    this.comments.delete(id);
     return Promise.resolve("comment deleted");
   }
 
   async getOneComment(id: number): Promise<IComment> {
-    return Promise.resolve(this.comments.get(id));
+    const commentStub = CommentBuilderRepository.commentStub();
+    this.saveComment(commentStub);
+    return this.comments.get(id);
   }
 }
