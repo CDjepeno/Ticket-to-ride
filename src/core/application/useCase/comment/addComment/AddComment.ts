@@ -6,18 +6,19 @@ import { Comment } from "../../../../entities/Comment";
 export class AddComment {
   constructor(private repository: ICommentRepository) {}
 
-  async execute(request: AddCommentRequest) {
+  async execute(request: AddCommentRequest): Promise<any> {
     try {
       const response = new AddCommentResponse();
-      const newComment = new Comment(
-        request.content,
-        request.userId,
-        request.ticketId
-      );
-      await this.repository.saveComment(newComment);
-      response.user = "comment added";
+      const newComment = new Comment(request.content,request.userId,request.ticketId);
 
-      return response;
+      return this.repository.saveComment(newComment).then(res => {
+        if(res.length > 0) {
+          return res 
+        } else {
+          response.user = "comment added"
+          return response
+        }
+      })
     } catch (err) {
       throw new Error(err);
     }

@@ -2,6 +2,7 @@ import { AddUserRequest } from "./AddUserRequest";
 import { AddUserResponse } from "./AddUserResponse";
 import { IUserRepository } from '../../../../repository/IUserRepository';
 import { User } from "../../../../entities/User";
+import { ValidationError } from "class-validator";
 
 export class AddUser {
   constructor(private repository: IUserRepository){}

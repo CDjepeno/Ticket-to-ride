@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User";
 import { Ticket } from "./Ticket";
+import { IsInt } from "class-validator";
 
 @Entity()
 export class Comment {
@@ -11,9 +12,11 @@ export class Comment {
   content: string;
 
   @Column("integer")
+  @IsInt()
   userId: number;
 
   @Column("integer")
+  @IsInt()
   ticketId: number;
 
   @ManyToOne(() => User, (user) => user.comments)

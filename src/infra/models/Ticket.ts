@@ -1,3 +1,4 @@
+import { IsInt } from "class-validator";
 import {
   Column,
   Entity,
