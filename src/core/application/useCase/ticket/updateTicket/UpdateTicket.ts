@@ -26,8 +26,13 @@ export class UpdateTicket {
         request.userId
       );
 
-      await this.repository.updateTicket(newTicket, id);
-      return "ticket updated";
+      return this.repository.updateTicket(newTicket, id).then(res => {
+        if (res.length > 0) {
+          return res
+        } 
+        response.ticket = "ticket updated";
+        return response
+      })
     } catch (err) {
       throw new Error(err);
     }

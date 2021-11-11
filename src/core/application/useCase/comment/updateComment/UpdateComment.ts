@@ -25,10 +25,13 @@ export class UpdateComment {
         +request.ticketId
       );
 
-      await this.repository.updateComment(newComment, id);
-
-      response.comment = "comment updated";
-      return response;
+      return  this.repository.updateComment(newComment, id).then(res => {
+        if (res.length > 0) {
+          return res
+        } 
+        response.comment = "comment updated";
+        return response
+      })
     } catch (err) {
       throw new Error(err);
     }
