@@ -2,7 +2,7 @@
 Ticket to ride
 </h1>
 
-![api_ticket_to_ride](https://user-images.githubusercontent.com/43074465/140535205-9368e541-43aa-4f43-9b56-ae7168f4f959.png)
+![Screenshot from 2023-01-12 23-42-50](https://user-images.githubusercontent.com/43074465/212197038-48546229-d9ff-4a25-b174-468683b95b79.png)
 
 # Getting Started
 ```bash
