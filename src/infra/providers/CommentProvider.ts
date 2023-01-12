@@ -9,7 +9,7 @@ import { User } from "../models/User";
 export class CommentProvider implements ICommentRepository {
   async saveComment(comment: IComment) {
     try {
-      const newComment = await getRepository(Comment).create(comment);
+      const newComment = getRepository(Comment).create(comment);
       const users = await getRepository(User).find()
       const tickets = await getRepository(Ticket).find()
  
