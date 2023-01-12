@@ -1,5 +1,5 @@
-import { Utils } from "../../../src/core/common/Utils";
-import { ITicket, Status } from "../../../src/core/entities/Ticket";
+import { Utils } from "../../../src/core-domain/common/Utils";
+import { ITicket, Status } from "../../../src/core-domain/entities/Ticket";
 
 export class TicketBuilderRepository {
   static ticketStub(): ITicket {

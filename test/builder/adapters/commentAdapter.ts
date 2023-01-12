@@ -1,6 +1,6 @@
-import { AddComment } from '../../../src/core/application/useCase/comment/addComment/AddComment';
-import { DeleteComment } from '../../../src/core/application/useCase/comment/deleteComment /DeleteComment';
-import { UpdateComment } from '../../../src/core/application/useCase/comment/updateComment/UpdateComment';
+import { AddComment } from '../../../src/core-domain/application/useCase/comment/addComment/AddComment';
+import { DeleteComment } from '../../../src/core-domain/application/useCase/comment/deleteComment /DeleteComment';
+import { UpdateComment } from '../../../src/core-domain/application/useCase/comment/updateComment/UpdateComment';
 import { InMemoryCommentRepository } from '../comment/InMemoryCommentRepository';
 
 

@@ -1,6 +1,6 @@
-import { ITicket } from "./../../core/entities/Ticket";
+import { ITicket } from "../../core-domain/entities/Ticket";
 import { getRepository } from "typeorm";
-import { ITicketRepository } from "../../core/repository/ITicketRepository";
+import { ITicketRepository } from "../../core-domain/repository/ITicketRepository";
 import { Ticket } from "../models/Ticket";
 import { validate } from "class-validator";
 

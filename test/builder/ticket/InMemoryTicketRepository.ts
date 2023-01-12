@@ -1,5 +1,5 @@
-import { ITicket, Status } from "../../../src/core/entities/Ticket";
-import { ITicketRepository } from "../../../src/core/repository/ITicketRepository";
+import { ITicket, Status } from "../../../src/core-domain/entities/Ticket";
+import { ITicketRepository } from "../../../src/core-domain/repository/ITicketRepository";
 import { TicketBuilderRepository } from "./TicketBuilderRepository";
 export class InMemoryTicketRepository implements ITicketRepository {
   private tickets: Map<number, ITicket>;

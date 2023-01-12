@@ -1,7 +1,7 @@
 import { validate } from "class-validator";
 import { getRepository } from "typeorm";
-import { IComment } from "../../core/entities/Comment";
-import { ICommentRepository } from "../../core/repository/ICommentRepository";
+import { IComment } from "../../core-domain/entities/Comment";
+import { ICommentRepository } from "../../core-domain/repository/ICommentRepository";
 import { Comment } from "../models/Comment";
 import { Ticket } from "../models/Ticket";
 import { User } from "../models/User";

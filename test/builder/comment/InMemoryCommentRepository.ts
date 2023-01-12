@@ -1,5 +1,5 @@
-import { ICommentRepository } from "../../../src/core/repository/ICommentRepository";
-import { IComment } from "../../../src/core/entities/Comment";
+import { ICommentRepository } from "../../../src/core-domain/repository/ICommentRepository";
+import { IComment } from "../../../src/core-domain/entities/Comment";
 import { CommentBuilderRepository } from "./CommentBuilderRepository";
 export class InMemoryCommentRepository implements ICommentRepository {
   private comments: Map<number, IComment>;

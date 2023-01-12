@@ -1,6 +1,6 @@
-import { IUser } from '../../../src/core/entities/User';
-import { IUserRepository } from '../../../src/core/repository/IUserRepository';
-import { AddUserResponse } from '../../../src/core/application/useCase/user/addUser/AddUserResponse';
+import { IUser } from '../../../src/core-domain/entities/User';
+import { IUserRepository } from '../../../src/core-domain/repository/IUserRepository';
+import { AddUserResponse } from '../../../src/core-domain/application/useCase/user/addUser/AddUserResponse';
 import { UserBuilderRepository } from './UserBuilderRepository';
 export class InMemoryUserRepository implements IUserRepository{
   private users: Map<number, IUser>

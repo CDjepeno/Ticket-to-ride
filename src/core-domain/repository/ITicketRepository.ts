@@ -1,5 +1,5 @@
 import { ValidationError } from 'class-validator';
-import { ITicket } from './../entities/Ticket';
+import { ITicket } from '../entities/Ticket';
 export interface ITicketRepository {
   
   saveTicket(Ticket: ITicket): Promise<string|ValidationError[]>

@@ -1,7 +1,7 @@
 import { CommentProvider } from "../CommentProvider";
-import { AddComment } from '../../../core/application/useCase/comment/addComment/AddComment';
-import { DeleteComment } from '../../../core/application/useCase/comment/deleteComment /DeleteComment';
-import { UpdateComment } from '../../../core/application/useCase/comment/updateComment/UpdateComment';
+import { AddComment } from '../../../core-domain/application/useCase/comment/addComment/AddComment';
+import { DeleteComment } from '../../../core-domain/application/useCase/comment/deleteComment /DeleteComment';
+import { UpdateComment } from '../../../core-domain/application/useCase/comment/updateComment/UpdateComment';
 
 const comentRepository = new CommentProvider();
 

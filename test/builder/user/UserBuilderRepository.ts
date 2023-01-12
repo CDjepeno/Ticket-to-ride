@@ -1,5 +1,5 @@
-import { Utils } from "../../../src/core/common/Utils"
-import { IUser } from "../../../src/core/entities/User"
+import { Utils } from "../../../src/core-domain/common/Utils"
+import { IUser } from "../../../src/core-domain/entities/User"
 
 export class UserBuilderRepository {
 

@@ -1,5 +1,5 @@
-import { AddUser } from "../../../core/application/useCase/user/addUser/AddUser";
-import { GetUsers } from "../../../core/application/useCase/user/getUsers/getUsers";
+import { AddUser } from "../../../core-domain/application/useCase/user/addUser/AddUser";
+import { GetUsers } from "../../../core-domain/application/useCase/user/getUsers/getUsers";
 import { UserProvider } from "../UserProvider";
 
 const userRepository = new UserProvider();

@@ -1,5 +1,5 @@
-import { AddUser } from '../../../src/core/application/useCase/user/addUser/AddUser';
-import { GetUsers } from '../../../src/core/application/useCase/user/getUsers/getUsers';
+import { AddUser } from '../../../src/core-domain/application/useCase/user/addUser/AddUser';
+import { GetUsers } from '../../../src/core-domain/application/useCase/user/getUsers/getUsers';
 import { InMemoryUserRepository } from '../user/InMemoryUserRepository';
 
 

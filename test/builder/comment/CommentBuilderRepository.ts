@@ -1,5 +1,5 @@
-import { Utils } from "../../../src/core/common/Utils";
-import { IComment } from '../../../src/core/entities/Comment';
+import { Utils } from "../../../src/core-domain/common/Utils";
+import { IComment } from '../../../src/core-domain/entities/Comment';
 export class CommentBuilderRepository {
   static commentStub(): IComment  {
     return {

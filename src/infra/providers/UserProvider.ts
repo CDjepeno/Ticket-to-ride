@@ -1,7 +1,7 @@
 import { validate } from 'class-validator';
 import { getRepository } from "typeorm";
-import { IUser } from "../../core/entities/User";
-import { IUserRepository } from "../../core/repository/IUserRepository";
+import { IUser } from "../../core-domain/entities/User";
+import { IUserRepository } from "../../core-domain/repository/IUserRepository";
 import { User } from "../models/User";
 
 export class UserProvider implements IUserRepository {
