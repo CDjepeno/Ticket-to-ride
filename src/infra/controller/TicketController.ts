@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import {
   addTicketInteractor,
   getTicketInteractor,
@@ -9,7 +9,6 @@ export class TicketController {
   static save = async (
     request: Request,
     response: Response,
-    next: NextFunction
   ) => {
     try {
       const ticket = request.body;
@@ -27,7 +26,6 @@ export class TicketController {
   static updateTicket = async (
     request: Request,
     response: Response, 
-    next: NextFunction
   ) => {
     try {
       const newTicket = request.body;
@@ -44,7 +42,6 @@ export class TicketController {
   static getTicket = async (
     request: Request,
     response: Response,
-    next: NextFunction
   ) => {
     try {
       const id = +request.params.id;

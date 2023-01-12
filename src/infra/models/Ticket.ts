@@ -1,4 +1,4 @@
-import { Contains, IsInt } from "class-validator";
+import { IsInt } from "class-validator";
 import {
   Column,
   Entity,

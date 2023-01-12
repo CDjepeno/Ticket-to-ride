@@ -7,13 +7,14 @@ import { expressApp } from "./express-app";
 createConnection()
   .then(async (_) => {
     const app = express();
+    const PORT = 3000
 
     expressApp(app);
 
-    app.listen(3000); 
+    app.listen(PORT); 
 
     console.log(
-      "Express server has started on port 3000. Open http://localhost:3000"
+      `Express server has started on port ${PORT}`
     );
   })
   .catch((err) => console.log(err));

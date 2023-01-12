@@ -7,7 +7,7 @@ import { validate } from "class-validator";
 export class TicketProvider implements ITicketRepository {
   async saveTicket(ticket: ITicket) {
     try {
-      const newTicket = await getRepository(Ticket).create(ticket);
+      const newTicket = getRepository(Ticket).create(ticket);
 
       const err = await validate(newTicket);
       
@@ -18,7 +18,7 @@ export class TicketProvider implements ITicketRepository {
         return "ticket added";
       }
 
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(err);
     }
   }
@@ -32,8 +32,8 @@ export class TicketProvider implements ITicketRepository {
         return "ticket updated";
       }
       throw new Error("unknow this ticket");
-    } catch (e) {
-      throw new Error(e);
+    } catch (err: any) {
+      throw new Error(err);
     }
   }
 
@@ -45,8 +45,8 @@ export class TicketProvider implements ITicketRepository {
         .where("ticket.id = :id", { id: idTicket })
         .getOne();
       return ticketDetails;
-    } catch (e) {
-      throw new Error(e);
+    } catch (err: any) {
+      throw new Error(err);
     }
   }
 
@@ -57,7 +57,7 @@ export class TicketProvider implements ITicketRepository {
         return ticket;
       }
       throw new Error("unknow this ticket");
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(err);
     }
   }

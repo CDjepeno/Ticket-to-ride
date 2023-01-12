@@ -7,7 +7,6 @@ export class AddTicket {
   constructor(private repository: ITicketRepository) {}
 
   async execute(request: AddTicketRequest): Promise<any> {
-    try {
       const response = new AddTicketResponse();
       const ticket = new Ticket(
         request.title,
@@ -23,8 +22,5 @@ export class AddTicket {
           return response;
         }
       });
-    } catch (err) {
-      throw new Error(err);
-    }
   }
 }

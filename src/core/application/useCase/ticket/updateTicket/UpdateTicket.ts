@@ -7,13 +7,10 @@ export class UpdateTicket {
   constructor(private repository: ITicketRepository) {}
 
   async execute(request: UpdateTicketRequest, id: number) {
-    try {
       const response = new UpdateTicketResponse();
       const oldTicket = await this.repository.getDetailsOneTicket(id);
-      let hasError = false;
 
       if (oldTicket === undefined) {
-        hasError = true;
         response.ticketUnknown = true;
 
         return response;
@@ -33,8 +30,5 @@ export class UpdateTicket {
         response.ticket = "ticket updated";
         return response
       })
-    } catch (err) {
-      throw new Error(err);
-    }
   }
 }

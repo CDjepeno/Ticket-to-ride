@@ -15,11 +15,12 @@ describe("Ticket UseCase test", () => {
 
   it("Should be update ticket", async () => {
     const ticketStub = TicketBuilderRepository.ticketStub();
-
+    
     const result = await updateTicketInteractorForTest.execute(
       ticketStub,
       ticketStub.id
     );
+
 
     expect(result).toBe("ticket updated");
   });

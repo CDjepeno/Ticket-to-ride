@@ -11,17 +11,19 @@ export class Comment {
   @Column("text")
   content: string;
 
-  @Column("integer")
-  @IsInt()
-  userId: number;
-
+  
+  @ManyToOne(() => Ticket, (ticket) => ticket.comments)
+  ticket: Ticket;
+  
   @Column("integer")
   @IsInt()
   ticketId: number;
-
+  
   @ManyToOne(() => User, (user) => user.comments)
   user: User;
-
-  @ManyToOne(() => Ticket, (ticket) => ticket.comments)
-  ticket: Ticket;
+  
+  @Column("integer")
+  @IsInt()
+  userId: number;
+  
 }

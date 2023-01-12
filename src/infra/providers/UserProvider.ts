@@ -1,4 +1,4 @@
-import { validate } from "class-validator";
+import { validate } from 'class-validator';
 import { getRepository } from "typeorm";
 import { IUser } from "../../core/entities/User";
 import { IUserRepository } from "../../core/repository/IUserRepository";
@@ -16,8 +16,7 @@ export class UserProvider implements IUserRepository {
         await getRepository(User).save(newUser);
         return "Welcome";
       }
-    } catch (err) {
-      console.log("error");
+    } catch (err: any) {
       throw new Error(err);
     }
   }
@@ -25,7 +24,7 @@ export class UserProvider implements IUserRepository {
   async getUsers() {
     try {
       return await getRepository(User).find();
-    } catch (e) {
+    } catch (e: any) {
       throw new Error(e);
     }
   }

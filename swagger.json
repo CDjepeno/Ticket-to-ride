@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Ticket to ride",
-    "description": "Test technique KOALA",
+    "description": "Ticket-ride",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"

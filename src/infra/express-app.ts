@@ -7,7 +7,7 @@ import ticketRoutes from './routes/ticketRoutes';
 import commentRoutes from './routes/commentRoutes';
 import loginRoute from './routes/loginRoutes';
 
-export const expressApp = async(app) => {
+export const expressApp = async(app: any) => {
   app.use(express.json());
   app.use(cors());
 

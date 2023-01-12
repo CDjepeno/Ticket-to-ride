@@ -1,6 +1,5 @@
-import { ValidationError } from 'class-validator';
-import { NextFunction, Request, Response } from "express";
-import { Any } from "typeorm";
+import { ErrorRequestHandler, Request, Response, NextFunction } from 'express';
+import { request } from "http";
 import {
   addUserInteractor,
   getUsersInteractor,
@@ -10,12 +9,12 @@ export class UserController {
   static save = async (
     request: Request,
     response: Response,
-    next: NextFunction
   ) => {
     try {
       const user = request.body;
       const result = await addUserInteractor.execute(user);
-      if (result.length > 0) {
+      
+      if (Array.isArray(result)) {
         return response.status(400).json(result);
         } else {
         return response.status(201).json(result);
@@ -34,7 +33,7 @@ export class UserController {
       const users = await getUsersInteractor.execute();
       return response.status(200).json(users);
     } catch (err) {
-      return response.status(500).send(err);
+      return response.status(500).json(err);
     }
   };
 }

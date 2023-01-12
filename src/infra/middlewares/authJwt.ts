@@ -1,7 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
-import { Ticket } from '../models/Ticket';
 import { User } from '../models/User';
 
 export const authJwt = async (
@@ -19,7 +18,7 @@ export const authJwt = async (
 
   const decodedToken: any = jwt.verify(
     token,
-    process.env.TOKEN_SECRET,
+    process.env.TOKEN_SECRET as jwt.Secret,
     (err, decodedToken) => {
       if (err) {
         const message =
