@@ -7,7 +7,7 @@ import { User } from "../models/User";
 export class UserProvider implements IUserRepository {
   async saveUser(user: IUser) {
     try {
-      const newUser = await getRepository(User).create(user);
+      const newUser = getRepository(User).create(user);
 
       const err = await validate(newUser);
       if (err.length > 0) {
@@ -22,10 +22,12 @@ export class UserProvider implements IUserRepository {
   }
 
   async getUsers() {
-    try {
-      return await getRepository(User).find();
-    } catch (e: any) {
-      throw new Error(e);
-    }
+    return getRepository(User).find();
+  }
+
+  async findUserByEmail(email: string) {
+      return getRepository(User)
+      .find({email})
+      .catch(() => undefined)
   }
 }

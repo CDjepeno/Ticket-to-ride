@@ -1,5 +1,4 @@
-import { ErrorRequestHandler, Request, Response, NextFunction } from 'express';
-import { request } from "http";
+import { Request, Response, NextFunction } from 'express';
 import {
   addUserInteractor,
   getUsersInteractor,

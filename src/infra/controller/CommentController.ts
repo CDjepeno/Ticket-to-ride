@@ -14,7 +14,9 @@ export class CommentController {
   ) => {
     try {
       const comment = request.body;
-      const result = await addCommentInteractor.execute(comment);
+      const id = request.params.id
+      
+      const result = await addCommentInteractor.execute(comment, +id);
       if (result.length > 0) {
         return response.status(400).json(result);
       } else if (typeof result === "string") {

@@ -9,6 +9,10 @@ export class AddUser {
   async execute(request: AddUserRequest): Promise<any> {
       const response = new AddUserResponse();
       const user = new User(request.username, request.email,request.age)
+      const duplicateUser = await this.repository.findUserByEmail(user.email)
+      if(duplicateUser) {
+        throw new Error('user not found')
+      }
       return this.repository.saveUser(user).then(res => {
         if(res.length > 0) {
           return res 

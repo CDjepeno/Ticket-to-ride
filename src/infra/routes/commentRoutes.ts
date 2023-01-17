@@ -6,7 +6,7 @@ const commentRoutes = Router()
 
 commentRoutes.get('/ticket/:id/comments', CommentController.getCommentsForOneTicket)
 commentRoutes.delete('/comments/:id',ownerCommentJwt, CommentController.delete)
-commentRoutes.post('/comments', CommentController.save)
+commentRoutes.post('/ticket/:id/comments', CommentController.save)
 commentRoutes.put('/comments/:id',ownerCommentJwt, CommentController.update)
 
 export default commentRoutes

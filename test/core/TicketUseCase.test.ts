@@ -6,11 +6,11 @@ import {
 import { TicketBuilderRepository } from "../builder/ticket/TicketBuilderRepository";
 
 describe("Ticket UseCase test", () => {
-  it("Should register a new ticket", () => {
+  it("Should register a new ticket", async () => {
     const ticket = TicketBuilderRepository.ticketStub();
-    const result = addTicketInteractorForTest.execute(ticket);
+    const result = await addTicketInteractorForTest.execute(ticket);
 
-    expect(result).resolves.toEqual("ticket added");
+    expect(result).toBe("ticket added");
   });
 
   it("Should be update ticket", async () => {

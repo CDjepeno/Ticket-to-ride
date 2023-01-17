@@ -27,5 +27,10 @@ export class InMemoryUserRepository implements IUserRepository{
         this.users.set(user.id ,user)
     }
     return this.users
-}
+    }
+
+    async findUserByEmail(email: string) {
+        const users = Array.from(this.users)
+        return users.find(u => u[1].email  === email)?.[1]
+    }
 }

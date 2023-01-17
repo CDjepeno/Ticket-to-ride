@@ -6,12 +6,12 @@ import {
 } from "../builder/adapters/commentAdapter";
 
 describe("Comment UseCase test", () => {
-  it("Should register a new comment", () => {
+  it("Should register a new comment", async () => {
     const comment = CommentBuilderRepository.commentStub();
 
-    const result = addCommentInteractorForTest.execute(comment);
+    const result = await addCommentInteractorForTest.execute(comment, 1);
 
-    expect(result).resolves.toEqual("comment added");
+    expect(result).toBe("comment added");
   });
 
   it("Should delete a comment", async () => {

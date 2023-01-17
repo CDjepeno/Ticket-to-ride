@@ -6,13 +6,13 @@ import { Comment } from "../../../../entities/Comment";
 export class AddComment {
   constructor(private repository: ICommentRepository) {}
 
-  async execute(request: AddCommentRequest): Promise<any> {
+  async execute(request: AddCommentRequest, ticketId: number): Promise<any> {
     try {
       const response = new AddCommentResponse();
       const newComment = new Comment(
         request.content,
         request.userId,
-        request.ticketId
+        ticketId
       );
 
       return this.repository.saveComment(newComment).then((res) => {

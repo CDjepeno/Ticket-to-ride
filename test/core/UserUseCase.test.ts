@@ -3,11 +3,22 @@ import { InMemoryUserRepository } from "../builder/user/InMemoryUserRepository";
 import { UserBuilderRepository } from "../builder/user/UserBuilderRepository";
 
 describe("User UseCase test", () => {
-  it("Should register a new user", () => {
+  it("Should register a new user", async () => {
     const user = UserBuilderRepository.userStub(); 
-    const result = addUserInteractorForTest.execute(user);
+    const result = await addUserInteractorForTest.execute(user);
     
-    expect(result).resolves.toEqual("Welcome");
+    expect(result).toBe("Welcome");
+  });
+
+  it.only("Should throw a error in email conflict", async () => {
+    const user = UserBuilderRepository.userStub(); 
+    // const result2 = await addUserInteractorForTest.execute(user);
+    await addUserInteractorForTest.execute(user)
+    function get() {
+      return addUserInteractorForTest.execute(user)
+    }
+    
+    expect(get).rejects.toThrow("user not found");
   });
 
   it("Should be return array of users", async() => {

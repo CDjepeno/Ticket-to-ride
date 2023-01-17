@@ -7,27 +7,24 @@ import { Ticket } from "../models/Ticket";
 import { User } from "../models/User";
 
 export class CommentProvider implements ICommentRepository {
-  async saveComment(comment: IComment) {
+  async saveComment(comment: IComment ) {
     try {
       const newComment = getRepository(Comment).create(comment);
-      const users = await getRepository(User).find()
-      const tickets = await getRepository(Ticket).find()
- 
-      const userExist = users.find(user => user.id === newComment.userId)
-      const ticketExist = tickets.find(ticket => ticket.id === newComment.ticketId)
 
+      await Promise.all([
+        getRepository(User).findOne(newComment.userId),
+        getRepository(Ticket).findOne(newComment.ticketId)
+      ])
+ 
       const err = await validate(newComment);
       
       if( err.length > 0) {
         return err
       } 
       
-      if(!userExist || !ticketExist) {
-        return 'Unknow User or ticket'
-      }else {
-        await getRepository(Comment).save(newComment);
-        return "comment added";
-      }
+      await getRepository(Comment).save(newComment);
+      return "comment added";
+      
     } catch (err) {
       throw new Error(err);
     }
